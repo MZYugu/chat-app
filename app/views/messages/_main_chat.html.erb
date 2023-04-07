@@ -152,13 +152,14 @@
   </div>
 
 </div>
-<div class="form">
-  <div class="input_form">
-    <input type="text" value="type a message" class="message_form">
+
+<%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
+  <div class="input_form" >
+    <%= f.text_field :content, class: 'message_form', placeholder: 'type a message' %>
     <label class="form_image">
       <span class="image_file">画像</span>
-      <input type="file" class="hidden">
+      <%= f.file_field :image, class: 'hidden' %>
     </label>
   </div>
-    <input type="submit" class="submit_btn">
-</div>
+  <%= f.submit '送信', class: 'submit_btn' %>
+<% end %>
